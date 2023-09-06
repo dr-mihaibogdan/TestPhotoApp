@@ -2,6 +2,7 @@ import {StackScreenProps} from '@react-navigation/stack';
 import React from 'react';
 import {Image, StyleSheet, View} from 'react-native';
 import Header from '../components/Header';
+import TextWithTitle from '../components/TextWithTitle';
 import RouteNames from '../models/navigation/RouteNames';
 import {MainNavigatorParamList} from '../navigation/MainNavigator';
 import colors from '../themes/colors';
@@ -18,7 +19,19 @@ const ImageDetailsScreen = ({route}: ImageDetailsNavProps) => {
     <View style={styles.screen}>
       <Header />
       <View style={styles.container}>
-        <Image style={styles.image} source={{uri: item.src.large}} />
+        <Image
+          style={StyleSheet.flatten([
+            styles.image,
+            {aspectRatio: item.width / item.height},
+          ])}
+          source={{uri: item.src.large}}
+        />
+        <TextWithTitle
+          style={styles.text}
+          title={'Shot by: '}
+          value={item.photographer}
+        />
+        <TextWithTitle style={styles.text} title={'Title: '} value={item.alt} />
       </View>
     </View>
   );
@@ -33,9 +46,15 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: metrics.size_20,
   },
+  text: {
+    marginBottom: metrics.size_8,
+  },
   image: {
-    flex: 1,
+    width: '100%',
     resizeMode: 'contain',
+    marginBottom: metrics.size_10,
+    marginTop: metrics.size_20,
+    borderRadius: metrics.size_16,
   },
 });
 

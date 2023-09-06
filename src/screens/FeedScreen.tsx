@@ -55,6 +55,7 @@ const FeedScreen = ({navigation}: FeedScreenProps) => {
     return (
       <ListItem
         onPressItem={handlePressItem(item)}
+        backgroundColor={item.avg_color}
         aspectRatio={item.width / item.height}
         imageSrc={{uri: item.src.large}}
         photographer={item.photographer}

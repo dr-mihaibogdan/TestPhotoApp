@@ -7,4 +7,6 @@ export default {
   size_12: 12,
   size_16: 16,
   size_20: 20,
+  size_24: 24,
+  size_34: 34,
 };

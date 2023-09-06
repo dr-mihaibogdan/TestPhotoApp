@@ -26,7 +26,7 @@ export const photoApi = createApi({
       return headers;
     },
   }),
-  tagTypes: [TAG_PHOTOS],
+  tagTypes: [TAG_PHOTOS as string],
 
   endpoints: builder => ({
     getCuratedPhotos: builder.query<PhotoDataResponse, number>({
@@ -35,12 +35,12 @@ export const photoApi = createApi({
         result
           ? [
               ...result.photos.map(({id}) => ({
-                type: TAG_PHOTOS,
+                type: TAG_PHOTOS as string,
                 id,
               })),
-              {type: TAG_PHOTOS, id: 'PARTIAL-LIST'},
+              {type: TAG_PHOTOS as string, id: 'PARTIAL-LIST'},
             ]
-          : [{type: TAG_PHOTOS, id: 'PARTIAL-LIST'}],
+          : [{type: TAG_PHOTOS as string, id: 'PARTIAL-LIST'}],
     }),
   }),
 });
