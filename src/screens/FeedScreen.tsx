@@ -40,14 +40,14 @@ const FeedScreen = ({navigation}: FeedScreenProps) => {
     });
   };
 
-  const onRefresh = () => {
+  const handleRefresh = () => {
     () => {
       setPage(1);
       refetch();
     };
   };
 
-  const loadMore = () => {
+  const handleLoadMore = () => {
     setPage(page + 1);
   };
 
@@ -71,10 +71,10 @@ const FeedScreen = ({navigation}: FeedScreenProps) => {
         refreshControl={
           <RefreshControl
             refreshing={isLoading && page === 1}
-            onRefresh={onRefresh}
+            onRefresh={handleRefresh}
           />
         }
-        onEndReached={loadMore}
+        onEndReached={handleLoadMore}
         ItemSeparatorComponent={ListSeparator}
       />
     </View>
